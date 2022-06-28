@@ -7,18 +7,22 @@
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById('root');
-    // jsx 방식
-    // const Title = () => <h3 id="title" onMouseEnter={() => console.log('mouse entered !!!')}>
-      function Title() {
-        return ( 
-          <h3 id="title" onMouseEnter={() => console.log('mouse entered !!!')}>Hello I'm a title</h3>
-        );
-      }
-    
+    let counter = 0;
 
-     const Button = () =>  <button style={{backgroundColor: "tomato"}} onClick={ ()=> console.log('im clicked')}>Click me</button> 
-
-      const Container= () => <div><Title/><Button/></div>
+    function render(){
       ReactDOM.render(<Container/>, root);
+    }
+    const countUp = () => {
+      counter = counter +1
+      render();
+    };
+
+    const Container= () => (
+      <div>
+        <h3>Total clicks : {counter}</h3>
+        <button onClick={countUp}>Click me</button> 
+      </div>
+      );
+    render();
   </script>
 </html>
