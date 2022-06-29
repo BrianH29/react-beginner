@@ -10,14 +10,14 @@
     let counter = 0;
 
     function render(){
-      ReactDOM.render(<Container/>, root);
+      ReactDOM.render(<App/>, root);
     }
     const countUp = () => {
       counter = counter +1
       render();
     };
 
-    const Container= () => (
+    const App= () => (
       <div>
         <h3>Total clicks : {counter}</h3>
         <button onClick={countUp}>Click me</button> 
