@@ -15,9 +15,10 @@
         // change the value of the previous state current code is not the safe way.
         // setCounter(counter + 1)
 
-        // this is much safter to change the current state to new state
+        // this is much safter to change the current state to new state, to check unexpected previous value change
         setCounter(current => current + 1)
       }
+      
       console.log(counter);
       return (
         <div>
