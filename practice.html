@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> <!-- engine -->
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> <!-- create element -->
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const App = () => {
+      let a = {
+        name : 'Brian',
+        age : 20,
+      }
+
+      const [student, setStudent] = React.useState(a);
+      const lastName = () => {
+        setStudent(student.name = 'Brian Hwang');
+      }
+
+      const [counter, setCounter] = React.useState(0);
+      const countUp = () => {
+        console.log(setCounter);
+        setCounter(counter + 1);
+      }
+      return (
+        <div>
+          <h3>total count : {counter}</h3>
+          <button onClick={countUp}>increase</button>
+
+          <h3>{student.name}</h3>
+          <button onClick={lastName}>add last name</button>
+        </div>
+      )
+    }
+
+    const root = document.getElementById('root');
+    ReactDOM.render(<App/> ,root);
+  </script>
+</html>

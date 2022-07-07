@@ -7,7 +7,7 @@
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     
-    const App = () => {
+    const MinutesToHours = () => {
       const [amount, setAmount] = React.useState(0);
       const [flipped, setFlipped] = React.useState(false);
       const onChange = (e) =>{
@@ -21,7 +21,6 @@
 
       return (
         <div>
-          <h3 className="hello">Super Converter</h3> 
           <div>
             <label htmlFor="minutes">Minutes</label>
             <input id="minutes" placeholder="Minutes" type="number" value={flipped ? amount  * 60 : amount} onChange={onChange} disabled={flipped === true}/>
@@ -34,6 +33,23 @@
           </div>
           <button onClick={reset}>reset</button>
           <button onClick={onFlip}>{ flipped ? 'Turn Back' : 'Flip'}</button>
+        </div>
+        )    
+      }
+    // const kmToMiles = () => {
+    //   return <h3>KM 2 M </h3>
+    // }
+
+    function kmToMiles() {
+      return <h3>KM 2 M </h3>
+    }
+    const App = () => {
+      
+      return (
+        <div>
+          <h3 className="hello">Super Converter</h3> 
+          <MinutesToHours />
+          <kmToMiles />
         </div>
         )    
       }
