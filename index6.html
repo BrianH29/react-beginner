@@ -24,7 +24,6 @@
           <div>
             <label htmlFor="minutes">Minutes</label>
             <input id="minutes" placeholder="Minutes" type="number" value={flipped ? amount  * 60 : amount} onChange={onChange} disabled={flipped === true}/>
-            <h3>minutes : {amount}</h3>  
           </div>
 
           <div>
@@ -36,20 +35,28 @@
         </div>
         )    
       }
-    // const kmToMiles = () => {
-    //   return <h3>KM 2 M </h3>
-    // }
 
-    function kmToMiles() {
+    function KmToMiles () {
       return <h3>KM 2 M </h3>
     }
+
     const App = () => {
-      
+      const [idx, setIdx] = React.useState('-1');
+      const onSelect = (e) => {
+        setIdx(e.target.value);
+      }
       return (
         <div>
           <h3 className="hello">Super Converter</h3> 
-          <MinutesToHours />
-          <kmToMiles />
+          <select value={idx} onChange={onSelect}>
+            <option value="-1">select your units</option>
+            <option value="0">Minuest & Hours</option>
+            <option value="1">Km & Miles</option>
+          </select>
+          <hr />
+          { idx === '-1' ? 'Please select your option' : null}
+          { idx === '0' ? <MinutesToHours/> : null }
+          { idx === '1' ? <KmToMiles /> : null }
         </div>
         )    
       }
