@@ -6,19 +6,39 @@
   <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> <!-- create element -->
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const root = document.getElementById('root');
-    // jsx 방식
-    // const Title = () => <h3 id="title" onMouseEnter={() => console.log('mouse entered !!!')}>
-      function Title() {
-        return ( 
-          <h3 id="title" onMouseEnter={() => console.log('mouse entered !!!')}>Hello I'm a title</h3>
-        );
-      }
     
+    const App = () => {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const onChange = (e) =>{
+        setAmount(e.target.value)
+      }
+      const reset = () => setAmount(0);
+      const onFlip = () => {
+        setFlipped( current => !current )
+        reset();
+      };
 
-     const Button = () =>  <button style={{backgroundColor: "tomato"}} onClick={ ()=> console.log('im clicked')}>Click me</button> 
+      return (
+        <div>
+          <h3 className="hello">Super Converter</h3> 
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input id="minutes" placeholder="Minutes" type="number" value={flipped ? amount  * 60 : amount} onChange={onChange} disabled={flipped === true}/>
+            <h3>minutes : {amount}</h3>  
+          </div>
 
-      const Container= () => <div><Title/><Button/></div>
-      ReactDOM.render(<Container/>, root);
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input id="hours" placeholder="Hours" type="number" value={flipped ? amount : Math.round(amount)/60} onChange={onChange} disabled={flipped === false} />
+          </div>
+          <button onClick={reset}>reset</button>
+          <button onClick={onFlip}>{ flipped ? 'Turn Back' : 'Flip'}</button>
+        </div>
+        )    
+      }
+        
+      const root = document.getElementById('root');
+      ReactDOM.render(<App/>, root);
   </script>
 </html>
