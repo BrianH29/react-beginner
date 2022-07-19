@@ -22,6 +22,7 @@ export default function Home(){
                 <div>
                     { movies.map((movie) => (
                         <Movie
+                            id={movie.id}
                             key={movie.id}
                             coverImg={movie.medium_cover_image}
                             title={movie.title}
